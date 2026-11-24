@@ -1,0 +1,16 @@
+name: m1_condition_a
+exploratory: true
+condition: A
+seed: 0
+n_episodes: 3
+phase: P1
+rule_id: access_match_v1
+max_steps: 6
+memory_tokens: 800
+k: 4
+temperature: 0.0
+llm: mock
+mock_policy: access_match
+artifacts_dir: artifacts/runs
+deterministic_time: true
+persist_db: false

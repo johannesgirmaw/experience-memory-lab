@@ -1,0 +1,27 @@
+# Generated experiment artifacts (keep the directory)
+artifacts/*
+!artifacts/.gitkeep
+*.egg-info/
+.eggs/
+
+# Python
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+.env
+.env.local
+uv.lock
+
+# Tooling
+.coverage
+htmlcov/
+dist/
+build/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/

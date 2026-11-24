@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "experience-memory-lab"
+version = "0.1.0"
+description = "Controlled experiments comparing AI-agent memory systems"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "experience-memory-lab" }]
+dependencies = [
+  "pydantic>=2.10",
+  "sqlalchemy>=2.0",
+  "alembic>=1.14",
+  "psycopg[binary]>=3.2",
+  "pgvector>=0.3",
+  "httpx>=0.28",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "pytest-cov>=6.0",
+  "ruff>=0.9",
+]
+
+[project.scripts]
+emlab = "experience_memory_lab.experiments.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/experience_memory_lab"]
+
+# Map src/ layout onto the import name experience_memory_lab.
+[tool.hatch.build.targets.wheel.sources]
+"src/experience_memory_lab" = "experience_memory_lab"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+  "integration: needs optional services or full harness",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
